@@ -1,4 +1,4 @@
-
+[![Build status](https://ci.appveyor.com/api/projects/status/45hv3ggm7jrsjttn?svg=true)](https://ci.appveyor.com/project/StefanScherer/docker-swarm-visualizer) [![](https://images.microbadger.com/badges/image/stefanscherer/visualizer-windows.svg)](https://microbadger.com/images/stefanscherer/visualizer-windows "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/stefanscherer/visualizer-windows.svg)](https://microbadger.com/images/stefanscherer/visualizer-windows "Get your own version badge on microbadger.com")
 
 ![Sample image of  nodes with data](./nodes.png)
 
@@ -76,7 +76,7 @@ docker run -d -p 8080:8080 -e DOCKER_HOST=${ip}:2375 --name=visualizer stefansch
 
 To work with a TLS secured Docker engine on Windows, set the environment variable `DOCKER_TLS_VERIFY` and
 bind mount the TLS certificates into the container.
- 
+
 ```
 $ip=(Get-NetIPAddress -AddressFamily IPv4 `
    | Where-Object -FilterScript { $_.InterfaceAlias -Eq "vEthernet (HNS Internal NIC)" } `
