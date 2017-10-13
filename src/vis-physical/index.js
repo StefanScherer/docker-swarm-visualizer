@@ -5,6 +5,7 @@ import d3 from 'd3';
 import _ from 'lodash';
 
 import { uuidRegExp, capitalize } from '../utils/helpers';
+import { filterContainers} from "../utils/filter-containers";
 
 var { innerWidth:W, innerHeight:H } = window;
 
@@ -14,6 +15,15 @@ var vis = d3.select('#app')
 
 var wrapper = vis.append('div')
     .classed('wrapper', true);
+
+let filterDiv = wrapper.append('div')
+    .attr('id', 'filter-wrapper');
+
+let filterInput = filterDiv.append('input')
+    .attr('id', 'filter')
+    .attr('placeholder', 'filter containers');
+
+filterInput.on('keyup', filterContainers);
 
 function removeVis() {
   cluster = wrapper.selectAll('.node-cluster')
@@ -125,11 +135,11 @@ container
 
 container.on('mouseenter',null);
 container.on('mouseleave',null);
-container.on('click', function(){
-    if (d3.select(this)[0][0].__data__.link){
-        showContainer(d3.select(this)[0][0].__data__.link)
-    }
-});
+// container.on('click', function(){
+//     if (d3.select(this)[0][0].__data__.link){
+//         showContainer(d3.select(this)[0][0].__data__.link)
+//     }
+// });
 
 
 cluster.exit().remove();
